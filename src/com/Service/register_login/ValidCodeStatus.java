@@ -96,16 +96,19 @@ public class ValidCodeStatus extends Controller {
         try {
             se.SendEmail();
             req.getSession().setAttribute(RandomValidateCodeUtil.RANDOMCODEKEY, vb);
+            req.getSession().setAttribute("UserEmail", Email);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
+
     /**
      * 前台发送邮件验证码
+     *
      * @param req 里面务必有UserName属性和UserEmail属性
-     * */
+     */
     public void printCodeEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (SendVaildCodeEmail(req)) {
             resp.getWriter().print("发送成功,请注意查收您的邮件箱(如果没收到请在垃圾箱里看看)");

@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 /**
  * 控制层
  * 控制前台调用后台代码的简单模块
- * */
+ */
 public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,12 +22,17 @@ public class Controller extends HttpServlet {
             Method m;
             if (mName.equals("printVaildCode")) {         //前台获取验证码
                 m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
-                m.invoke(this,req, resp);
+                m.invoke(this, req, resp);
             } else if (mName.equals("Login")) {                //前台验证码值传入后台验证
                 m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
-                m.invoke(this,req, resp);
-            }
-            else
+                m.invoke(this, req, resp);
+            } else if (mName.equals("printCodeEmail")) {
+                m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
+                m.invoke(this, req, resp);
+            } else if (mName.equals("Register")) {
+                m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
+                m.invoke(this, req, resp);
+            } else
                 ShowError(resp);        //如果有人篡改网页方法控制源码并且没有成功则进入这个页面
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

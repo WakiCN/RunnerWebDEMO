@@ -27,14 +27,14 @@ public class Register extends Controller {
         SessionFactory sf = HibernateSessionFactory.getSf();
         Session se = sf.openSession();
         if (vaildcode.equals("验证码填写正确")) {
-
+            UserDao(req, resp, se);
         } else {
             resp.getWriter().print("验证码错误，请重新填写");
             return;
         }
     }
 
-    private void UserDao(HttpServletRequest req, Session se) {
+    private void UserDao(HttpServletRequest req, HttpServletResponse resp, Session se) {
         User us = new User();
         //null,'Waki','61bc69fff1287f277a538f504490224d','2018-5-9',1,'1990-1-1',1,0,'1062540709@qq.com'
         us.setName(req.getParameter("Name"));
@@ -45,15 +45,18 @@ public class Register extends Controller {
         us.setBirthDate(new Date());
         us.setLevel_Id(0);
         us.setIsban(0);
-        us.setEmail(req.getParameter("Email"));
+        us.setEmail((String) req.getSession().getAttribute("UserEmail"));
         try {
             se.beginTransaction();
             se.save(us);
             se.getTransaction().commit();
-        }catch (Exception e){
+            resp.getWriter().print("注册完成，现在进入登录页面");
+        }catch (IOException io){
+            io.printStackTrace();
+        }catch (Exception e) {
             se.getTransaction().rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             se.close();
         }
     }
