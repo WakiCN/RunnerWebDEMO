@@ -1,30 +1,28 @@
 package com.testPackage;
 
+import com.Dao.HibernateEntity.User_Sex;
+import com.Dao.HibernateSessionFactory;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
-import java.text.SimpleDateFormat;
 
 public class testmain {
-    private SessionFactory sessionFactory;
-
     public static void main(String[] args) throws Exception {
-        SimpleDateFormat sm=new SimpleDateFormat();
-    }
-
-    protected void initDataBase() throws Exception {
-        //为应用程序设置了一个SessionFactory！
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() //配置文件来自 hibernate.cfg.xml
-                .build();
+        SessionFactory sf=HibernateSessionFactory.getSf();
+        Session se=sf.openSession();
+        se.beginTransaction();
         try {
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        } catch (Exception e) {
-            //注册表将被SessionFactory销毁，但是我们在构建SessionFactory时遇到了麻烦，所以手动破坏它。
-            StandardServiceRegistryBuilder.destroy(registry);
+            User_Sex us=new User_Sex();
+            us.setSex_Id(1);
+            us.setSexName("男");
+            se.save(us);
+        }catch (Exception e){
+            se.getTransaction().rollback();
             e.printStackTrace();
+        }finally {
+            se.getTransaction().commit();
+            se.close();
         }
     }
+
+
 }

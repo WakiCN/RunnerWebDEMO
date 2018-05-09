@@ -16,5 +16,7 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping resource="com/Dao/HibernateEntity/User_Level.hbm.xml"/>
         <mapping resource="com/Dao/HibernateEntity/User.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/User_Sex.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/User_Ban.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
