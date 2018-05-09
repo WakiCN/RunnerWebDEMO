@@ -31,4 +31,9 @@ public class HibernateSessionFactory {
             new HibernateSessionFactory().initDataBase();
         return sf;
     }
+
+    public static void CloseSessionFactory(){
+        if (sf!=null)
+            sf.close();
+    }
 }

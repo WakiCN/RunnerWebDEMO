@@ -2,6 +2,7 @@ package com.Service.register_login;
 
 import com.Controller.Controller;
 import com.Dao.HibernateEntity.User;
+import com.Dao.HibernateEntity.User_Sex;
 import com.Dao.HibernateSessionFactory;
 import com.Service.Util.Md5.Md5Message;
 import org.hibernate.Session;
@@ -30,34 +31,41 @@ public class Register extends Controller {
             UserDao(req, resp, se);
         } else {
             resp.getWriter().print("验证码错误，请重新填写");
-            return;
         }
     }
 
     private void UserDao(HttpServletRequest req, HttpServletResponse resp, Session se) {
-        User us = new User();
-        //null,'Waki','61bc69fff1287f277a538f504490224d','2018-5-9',1,'1990-1-1',1,0,'1062540709@qq.com'
-        us.setName(req.getParameter("Name"));
-        us.setPassword(Md5Message.getMD5(req.getParameter("PassWord")));
-        us.setRegDate(new Date());
-        int sexid = req.getParameter("Sex").equals("女") ? 0 : 1;
-        us.setSex_Id(sexid);
-        us.setBirthDate(new Date());
-        us.setLevel_Id(0);
-        us.setIsban(0);
-        us.setEmail((String) req.getSession().getAttribute("UserEmail"));
         try {
             se.beginTransaction();
-            se.save(us);
+            se.save(setValue(req));
             se.getTransaction().commit();
             resp.getWriter().print("注册完成，现在进入登录页面");
-        }catch (IOException io){
+        } catch (IOException io) {
             io.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             se.getTransaction().rollback();
             e.printStackTrace();
         } finally {
             se.close();
         }
+    }
+
+    private User setValue(HttpServletRequest req) {
+        User us = new User();
+        User_Sex userSex = new User_Sex();
+        if (req.getParameter("Sex").equals("女"))
+            userSex.setSex_Id(1);
+        else
+            userSex.setSex_Id(2);
+        us.setId(0);
+        us.setName(req.getParameter("Name"));
+        us.setPassword(Md5Message.getMD5(req.getParameter("PassWord")));
+        us.setRegDate(new Date());
+        us.setUs(userSex);
+        us.setBirthDate(new Date());
+        us.setLevel_Id(0);
+        us.setIsban(0);
+        us.setEmail((String) req.getSession().getAttribute("UserEmail"));
+        return us;
     }
 }

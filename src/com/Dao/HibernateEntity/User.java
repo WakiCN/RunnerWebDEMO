@@ -3,9 +3,18 @@ package com.Dao.HibernateEntity;
 import java.util.Date;
 
 public class User {
-    private int id, sex_Id, level_Id, isban;
+    private int id, level_Id, isban;
     private String name, password, email;
     private Date regDate, birthDate;
+    private User_Sex us;
+
+    public User_Sex getUs() {
+        return us;
+    }
+
+    public void setUs(User_Sex us) {
+        this.us = us;
+    }
 
     public String getEmail() {
         return email;
@@ -21,14 +30,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getSex_Id() {
-        return sex_Id;
-    }
-
-    public void setSex_Id(int sex_Id) {
-        this.sex_Id = sex_Id;
     }
 
     public int getLevel_Id() {
