@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.Dao.HibernateEntity">
+    <class name="com.Dao.HibernateEntity.User" table="t_User">
+        <id name="id" column="id" type="java.lang.String">
+            <generator class="native" />
+        </id>
+        <property name="name" column="name" type="java.lang.String" />
+        <property name="password" column="password" type="java.lang.String" />
+        <property name="regDate" column="regDate" type="java.util.Date" />
+        <property name="sex_Id" column="sex_Id" type="java.lang.String" />
+        <property name="birthDate" column="birthDate" type="java.util.Date" />
+        <property name="level_Id" column="level_Id" type="java.lang.Integer"/>
+        <property name="isban" column="isban" type="java.lang.Integer"/>
+        <property name="email" column="email" type="java.lang.String" />
+    </class>
+</hibernate-mapping>

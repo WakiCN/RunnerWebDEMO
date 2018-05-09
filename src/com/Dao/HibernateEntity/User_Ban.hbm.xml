@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.Dao.HibernateEntity">
+    <class name="com.Dao.HibernateEntity.User_ban" table="t_User_ban">
+        <id name="ban_Id" column="ban_Id">
+            <generator class="native"/>
+        </id>
+        <property name="ban_adminId" column="ban_adminUser"/>
+        <property name="ban_UserId" column="ban_UserId"/>
+        <property name="ban_Date" column="ban_Date"/>
+        <property name="ban_unDate" column="ban_unban"/>
+    </class>
+</hibernate-mapping>

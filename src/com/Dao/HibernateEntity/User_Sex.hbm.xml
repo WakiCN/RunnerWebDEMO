@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.Dao.HibernateEntity">
+    <class name="com.Dao.HibernateEntity.User_Sex" table="t_User_Sex">
+        <id name="sex_Id" column="sex_Id">
+            <generator class="native"/>
+        </id>
+        <property name="sexName" column="sex_Name"/>
+    </class>
+</hibernate-mapping>
