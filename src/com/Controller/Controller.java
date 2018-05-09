@@ -43,7 +43,7 @@ public class Controller extends HttpServlet {
         super.doGet(req, resp);
     }
 
-    private void ShowError(HttpServletResponse resp) throws ServletException, IOException {
+    private void ShowError(HttpServletResponse resp) throws IOException {
         System.out.println("有人篡改网页源码");
         resp.getWriter().print("小调皮，别乱改了");
     }

@@ -1,7 +1,7 @@
 package com.Service.register_login;
 
 import com.Controller.Controller;
-import com.Service.Util.DateDispose.Dispose;
+import com.Service.Util.DateFormat.Dispose;
 import com.Service.Util.Email.EmailUser_Bean;
 import com.Service.Util.Email.SendEmail;
 import com.Service.Util.VaildCode.RandomValidateCodeUtil;
@@ -41,7 +41,7 @@ public class ValidCodeStatus extends Controller {
         if (vb == null)
             return "您并没有任何需要验证的验证码";
         if (vb.isVaild()) {
-            return vb.getVailCode().equalsIgnoreCase(req.getParameter("Vaildcode")) ? true + "" : false + "";
+            return vb.getVailCode().equalsIgnoreCase(req.getParameter("Vaildcode")) ? "验证码填写正确" + "" : "验证码错误";
         } else
             return "验证码失效";
     }
