@@ -1,12 +1,11 @@
 package com.testPackage;
 
 import com.Dao.HibernateEntity.User;
-import com.Dao.HibernateEntity.User_Sex;
 import com.Dao.HibernateSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.Date;
+import java.util.List;
 
 public class testmain {
     public static void main(String[] args) {
@@ -14,20 +13,9 @@ public class testmain {
         Session se=sf.openSession();
         se.beginTransaction();
         try {
-            User us=new User();
-            User_Sex u=new User_Sex();
-            u.setSexName("女");
-            u.setSex_Id(0);
-            us.setEmail("1062540709@qq.com");
-            us.setLevel_Id(0);
-            us.setName("Test5");
-            us.setIsban(0);
-            us.setPassword("123456789");
-            us.setBirthDate(new Date());
-            us.setRegDate(new Date());
-            us.setId(0);
-            us.setUs(u);
-            se.save(us);
+            String hql="from User where name='aaa'";
+            List<User> li=se.createQuery(hql).list();
+            User us=li.get(0);
             se.getTransaction().commit();
             System.out.println(us.getEmail());
         }catch (Exception e){

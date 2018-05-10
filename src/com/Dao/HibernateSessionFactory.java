@@ -8,11 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class HibernateSessionFactory {
     private static SessionFactory sf;
 
-    static {
-        new HibernateSessionFactory().initDataBase();
-    }
-
-    private void initDataBase() {
+    public void initDataBase() {
         //为应用程序设置了一个SessionFactory！
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() //配置文件来自 hibernate.cfg.xml
