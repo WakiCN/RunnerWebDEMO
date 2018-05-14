@@ -4,6 +4,6 @@ package com.Recycling;
  * */
 public class RetrieveRAM {
     public void selectValidCod(){
-        //todo 检查已存在HttpSession里的有效图形验证码
+        //TODO 检查已存在HttpSession里的有效图形验证码
     }
 }

@@ -1,4 +1,4 @@
-package com.Dao.HibernateEntity;
+package com.Dao.HibernateEntity.User;
 
 import java.util.Date;
 

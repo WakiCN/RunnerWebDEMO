@@ -1,4 +1,4 @@
-package com.Dao.HibernateEntity;
+package com.Dao.HibernateEntity.User;
 
 public class User_Level {
     private int level_Id;

@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.Dao.HibernateEntity">
-    <class name="com.Dao.HibernateEntity.User_Level" table="t_user_level">
+<hibernate-mapping package="com.Dao.HibernateEntity.User">
+    <class name="com.Dao.HibernateEntity.User.User_Level" table="t_user_level">
         <id name="level_Id" column="level_Id">
             <generator class="increment" />
         </id>

@@ -14,9 +14,11 @@
         <property name="current_session_context_class">thread</property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
-        <mapping resource="com/Dao/HibernateEntity/User_Level.hbm.xml"/>
-        <mapping resource="com/Dao/HibernateEntity/User.hbm.xml"/>
-        <mapping resource="com/Dao/HibernateEntity/User_Sex.hbm.xml"/>
-        <mapping resource="com/Dao/HibernateEntity/User_Ban.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/User/User_Level.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/User/User.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/User/User_Sex.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/User/User_Ban.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/Message/News.hbm.xml"/>
+        <mapping resource="com/Dao/HibernateEntity/Message/News_Message.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

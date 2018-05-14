@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.Dao.HibernateEntity">
-    <class name="com.Dao.HibernateEntity.User" table="t_User">
+<hibernate-mapping package="com.Dao.HibernateEntity.User">
+    <class name="com.Dao.HibernateEntity.User.User" table="t_User">
         <id name="id" column="id">
             <generator class="native" />
         </id>
@@ -14,7 +14,7 @@
         <property name="level_Id" column="level_Id"/>
         <property name="isban" column="isban"/>
         <property name="email" column="email"/>
-        <many-to-one name="us" class="com.Dao.HibernateEntity.User_Sex" column="sex_Id"/><!--多对一-->
+        <many-to-one name="us" class="com.Dao.HibernateEntity.User.User_Sex" column="sex_Id"/><!--多对一-->
 
     </class>
 </hibernate-mapping>

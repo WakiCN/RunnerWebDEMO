@@ -1,8 +1,8 @@
 package com.Service.register_login;
 
 import com.Controller.Controller;
-import com.Dao.HibernateEntity.User;
-import com.Dao.HibernateEntity.User_Sex;
+import com.Dao.HibernateEntity.User.User;
+import com.Dao.HibernateEntity.User.User_Sex;
 import com.Dao.HibernateSessionFactory;
 import com.Service.Util.Md5.Md5Message;
 import org.hibernate.Session;
@@ -34,6 +34,9 @@ public class Register extends Controller {
         }
     }
 
+    /**
+     * 调用Dao层代码持久化该用户数据
+     */
     private void UserDao(HttpServletRequest req, HttpServletResponse resp, Session se) {
         try {
             se.beginTransaction();
@@ -50,6 +53,9 @@ public class Register extends Controller {
         }
     }
 
+    /**
+     * 前台值传入服务端并实例化用户实体类填充数据
+     */
     private User setValue(HttpServletRequest req) {
         User us = new User();
         User_Sex userSex = new User_Sex();

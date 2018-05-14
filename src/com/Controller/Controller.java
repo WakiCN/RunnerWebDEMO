@@ -23,13 +23,19 @@ public class Controller extends HttpServlet {
             if (mName.equals("printVaildCode")) {         //前台获取验证码
                 m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
                 m.invoke(this, req, resp);
-            } else if (mName.equals("Login")) {                //前台验证码值传入后台验证
+            } else if (mName.equals("Login")) {                //传入账户密码以及验证码值来确定登录状态
                 m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
                 m.invoke(this, req, resp);
-            } else if (mName.equals("printCodeEmail")) {
+            } else if (mName.equals("printCodeEmail")) {        //打印图形验证码到前台
                 m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
                 m.invoke(this, req, resp);
-            } else if (mName.equals("Register")) {
+            } else if (mName.equals("Register")) {              //注册使用的方法
+                m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
+                m.invoke(this, req, resp);
+            } else if (mName.equals("getNews")) {                //获取新闻表
+                m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
+                m.invoke(this, req, resp);
+            } else if (mName.equals("getNew")) {                  //获取对应的新闻
                 m = this.getClass().getDeclaredMethod(mName, HttpServletRequest.class, HttpServletResponse.class);
                 m.invoke(this, req, resp);
             } else
